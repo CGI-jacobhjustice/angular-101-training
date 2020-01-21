@@ -90,7 +90,7 @@ this.http.get(`/assets`).subscribe(data  =>  allAssets = data);
 
 const  params = new  HttpParams().set('assetType ', "Computer");
 
-this.http.get(`/assets`, params).subscribe(data  =>  computerAssets = data);
+this.http.get(`/assets`, { params: params }).subscribe(data  =>  computerAssets = data);
 
 ```
 
