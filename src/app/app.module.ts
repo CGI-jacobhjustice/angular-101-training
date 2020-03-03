@@ -5,13 +5,16 @@ import { HttpClientModule } from '@angular/common/http'
 // used to create fake backend
 import { mockBackendProvider } from './helpers/mock-backend';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { HelloComponent } from './hello/hello.component';
 import { AssetService } from './services/asset.service';
+import { AppRoutingModule } from './app-routing.module';
+import {APP_BASE_HREF} from '@angular/common';
+
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HttpClientModule],
   declarations: [ AppComponent, HelloComponent],
+  imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   bootstrap:    [ AppComponent ],
-  providers: [AssetService, mockBackendProvider]
+  providers: [AssetService, mockBackendProvider, {provide: APP_BASE_HREF, useValue : '/' }]
 })
 export class AppModule { }
