@@ -1,8 +1,9 @@
-<!-- <head>
+<head>
   <base href="/">
-</head> -->
+</head>
 
-<app-hello name="{{ name }}"></app-hello>
+<!-- <app-hello ></app-hello>
+<a routerLink="/goodbye" routerLinkActive="active">Heroes</a>
 <button (click)="addAssetDemo()">Add Asset</button>
 <h1>Assets:</h1>
 <div *ngIf="assets">
@@ -11,4 +12,8 @@
       <b>Tag ID:</b> {{a.assetTagId}}, <b>Asset Type:</b> {{a.assetType}}, <b>Description:</b> {{a.description}}, <b>Date Added:</b> {{a.dateAdded.toLocaleString()}}, <b>Assigned To:</b> {{a.assignedTo}}, <b>retired:</b> {{a.retired}}
     </li>
   </ul>
+</div> -->
+
+<div>
+  <router-outlet #routerOutlet="outlet"></router-outlet>
 </div>

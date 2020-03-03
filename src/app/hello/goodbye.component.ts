@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-hello',
-  template: `<h1>Hello !</h1>`,
+  selector: 'app-goodbye',
+  template: `<h1>Goodbye...</h1>`,
   styles: [`h1 { font-family: Lato; }`]
 })
-export class HelloComponent   {
+export class GoodbyeComponent   {
   // @Input() name: string;
   // constructor (private route:ActivatedRoute){}
 

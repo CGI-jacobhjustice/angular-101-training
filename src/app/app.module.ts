@@ -9,10 +9,11 @@ import { HelloComponent } from './hello/hello.component';
 import { AssetService } from './services/asset.service';
 import { AppRoutingModule } from './app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
+import { GoodbyeComponent } from './hello/goodbye.component';
 
 
 @NgModule({
-  declarations: [ AppComponent, HelloComponent],
+  declarations: [ AppComponent, HelloComponent, GoodbyeComponent],
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   bootstrap:    [ AppComponent ],
   providers: [AssetService, mockBackendProvider, {provide: APP_BASE_HREF, useValue : '/' }]
