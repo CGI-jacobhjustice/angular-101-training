@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HelloComponent } from './hello/hello.component';
-import { GoodbyeComponent } from './hello/goodbye.component';
-
+import { RetireComponent } from './features/Retire/retire.component';
 
 const routes: Routes = [
-  {path: 'hello', component: HelloComponent},
-  {path:'goodbye', component: GoodbyeComponent}
+  {path: 'retire/:id', component: RetireComponent},
+  {path: '', component: RetireComponent},
 ];
 
 @NgModule({

@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { inherits } from 'util';
+import { GenericAssetDetailComponent } from '../_Shared/GenericAssetDetailComponent';
 
 @Component({
-  selector: 'app-goodbye',
-  template: `<h1>Goodbye...</h1>`,
+  selector: 'app-retire',
+  templateUrl: `./retire.component.html`,
   styles: [`h1 { font-family: Lato; }`]
 })
-export class GoodbyeComponent   {
+export class RetireComponent extends GenericAssetDetailComponent  {
   // @Input() name: string;
   // constructor (private route:ActivatedRoute){}
 
