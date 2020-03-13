@@ -15,12 +15,14 @@ import { UpdateComponent } from './features/Update/update.component';
 import { CreateComponent } from './features/Create/create.component';
 import { DetailsComponent } from './features/Details/details.component';
 import { YesNoPipe } from './features/_Shared/Pipes/yesno.pipe';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 
 
 @NgModule({
   declarations: [ AppComponent, RetireComponent, AllComponent, EmployeeComponent, UpdateComponent, CreateComponent, DetailsComponent, YesNoPipe],
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   bootstrap:    [ AppComponent ],
-  providers: [AssetService, mockBackendProvider, {provide: APP_BASE_HREF, useValue : '/' }]
+  providers: [AssetService, mockBackendProvider, {provide: LocationStrategy, useClass: HashLocationStrategy}]//{provide: APP_BASE_HREF, useValue : '/' }]
 })
 export class AppModule { }

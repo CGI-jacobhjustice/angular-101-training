@@ -6,13 +6,17 @@ import { AssetService } from '@/services/asset.service';
 @Component({
   selector: 'app-details',
   templateUrl: `./details.component.html`,
+  styleUrls: ['details.component.css']
 })
 export class DetailsComponent extends GenericAssetDetailComponent  {
+  route: ActivatedRoute
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private service: AssetService
-  ) {super(service)}
+    route: ActivatedRoute,
+    service: AssetService
+  ) {
+    super(service)
+    this.route = route;
+  }
 
   ngOnInit() {
     var id = parseInt(this.route.snapshot.paramMap.get('id'))
