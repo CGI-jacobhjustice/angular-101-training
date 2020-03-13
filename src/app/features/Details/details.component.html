@@ -1,13 +1,5 @@
-<div>
-    <div><b>ID: </b>{{CurrentAsset.assetTagId}}</div>
-    <div><b>Type: </b> {{CurrentAsset.assetType}}</div>
-    <div><b>Description: </b>{{CurrentAsset.description}}</div>
-    <div><b>Assigned To: </b> {{CurrentAsset.assignedTo}}</div>
-    <div><b>Date Added: </b> {{CurrentAsset.dateAdded | date:"MM/dd/yyyy"}}</div>
-    <div><b>Is Retired: </b> {{CurrentAsset.retired | yes_no}}</div>
-    <div><b>Date Retired: </b> {{CurrentAsset.dateRetired | date:"MM/dd/yyyy"}}</div>
-</div>
-
+<div ng-include="'../_Shared/Details/details.partial.html'"></div>
+<app-asset [asset]="CurrentAsset"></app-asset>
 <div>
     <button routerLink="/">Exit Details</button>
     <button routerLink="/update/{{CurrentAsset.assetTagId}}">Edit</button>

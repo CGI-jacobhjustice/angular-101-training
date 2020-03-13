@@ -1,1 +1,6 @@
-<h2>Would you like to retire?</h2>
+<h2>Would you like to retire the current asset?</h2>
+<app-asset [asset]="CurrentAsset"></app-asset>
+<div>
+    <button routerLink="/details/{{CurrentAsset.assetTagId}}">No</button>
+    <button (click)="RetireAsset()">Yes</button>
+</div>

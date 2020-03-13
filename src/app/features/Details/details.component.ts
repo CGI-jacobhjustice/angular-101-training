@@ -6,7 +6,7 @@ import { AssetService } from '@/services/asset.service';
 @Component({
   selector: 'app-details',
   templateUrl: `./details.component.html`,
-  styleUrls: ['details.component.css']
+  styleUrls: ['../_Shared/css/button.component.css']
 })
 export class DetailsComponent extends GenericAssetDetailComponent  {
   route: ActivatedRoute

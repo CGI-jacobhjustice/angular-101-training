@@ -20,5 +20,9 @@ export class AssetService {
     return this.http.get<Asset[]>(`${environment.api_url}/assets`);
   }
 
+  public retireAsset(asset : Asset) : Observable<Asset> {
+    return this.http.delete<Asset>(`${environment.api_url}/assets/retire`);
+  }
+
 }
 

@@ -1,19 +1,30 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GenericAssetDetailComponent } from '../_Shared/GenericAssetDetailComponent';
+import { ActivatedRoute } from '@angular/router';
+import { AssetService } from '@/services/asset.service';
 
 @Component({
   selector: 'app-retire',
   templateUrl: `./retire.component.html`,
-  styles: [`h1 { font-family: Lato; }`]
+  styleUrls: ['../_Shared/css/button.component.css']
 })
 export class RetireComponent extends GenericAssetDetailComponent  {
-  // @Input() name: string;
-  // constructor (private route:ActivatedRoute){}
+  route: ActivatedRoute
+  constructor(
+    route: ActivatedRoute,
+    service: AssetService
+  ) {
+    super(service)
+    this.route = route;
+  }
 
-  // ngOnInit() {
-  //   let name = this.route.snapshot.paramMap.get('name');
-  
-  //   this.name = name
-  // }
+  ngOnInit() {
+    var id = parseInt(this.route.snapshot.paramMap.get('id'))
+    this.GetAsset(id)
+  }
+
+  RetireAsset() {
+    this.Service.retireAsset(this.CurrentAsset)
+  }
 }
 

@@ -19,7 +19,7 @@ export class AllComponent extends GenericAssetsListComponent  {
     this.Service.createAsset(new Asset())
     console.log("GET ALL")
     this.Service.getAssets().subscribe(data => {
-      this.AllAssets = data
+      this.AllAssets = data.filter(asset => !asset.retired) // TODO: Is this right?
     })
   }
 }
