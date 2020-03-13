@@ -14,8 +14,4 @@ export abstract class GenericAssetsListComponent   {
   }
 
   abstract GetAssets();
-
-  RenderList() {
-
-  }
 }

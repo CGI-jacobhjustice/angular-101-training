@@ -1,4 +1,24 @@
-as
-<ul>
-    <li *ngFor="let asset of AllAssets">{{asset.description}}</li>
-</ul>
+<h2>All Assets</h2>
+<div *ngIf="AllAssets == null || AllAssets.length == 0">No assets</div>
+<div *ngIf="AllAssets != null && AllAssets.length > 0">
+    <table>
+        <thead>
+            <th>Asset Tag ID</th>
+            <th>Asset Type</th>
+            <th>Asset Description</th>
+            <th>Assigned To ID</th>
+            <th>Date Added</th>
+            <th>Retired?</th>
+            <th>Date Retired</th>
+        </thead>
+        <tr *ngFor="let asset of AllAssets">
+            <td>{{asset.assetTagId}}</td>
+            <td>{{asset.assetType}}</td>
+            <td>{{asset.description}}</td>
+            <td>{{asset.assignedTo}}</td>
+            <td>{{asset.dateAdded | date:"MM/dd/yyyy"}}</td>
+            <td>{{asset.retired | yes_no }}</td>
+            <td>{{asset.dateRetired | date:"MM/dd/yyyy"}}</td>
+        </tr>
+    </table>
+</div>

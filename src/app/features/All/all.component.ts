@@ -7,6 +7,7 @@ import { debug } from 'util';
 @Component({
   selector: 'app-all',
   templateUrl: `./all.component.html`,
+  styleUrls: ['./all.component.css']
 })
 export class AllComponent extends GenericAssetsListComponent  {
   constructor(service: AssetService) {
