@@ -1,5 +1,7 @@
 import { Asset } from "./Asset";
+import { AssetService } from "@/services/asset.service";
+
 
 export abstract class GenericAssetsListComponent   {
-  AllAssets: Asset[];
+  constructor(AllAssets: Asset[], Service: AssetService) {}
 }

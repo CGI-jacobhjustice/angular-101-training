@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { inherits } from 'util';
 import { GenericAssetDetailComponent } from '../_Shared/GenericAssetDetailComponent';
 
 @Component({
