@@ -1,7 +1,21 @@
-import { Asset } from "./Asset";
+import { Asset } from "@/models/Asset";
 import { AssetService } from "@/services/asset.service";
 
 
 export abstract class GenericAssetsListComponent   {
-  constructor(AllAssets: Asset[], Service: AssetService) {}
+  AllAssets: Asset[]
+  Service: AssetService
+
+  constructor(service: AssetService) {
+    this.Service = service
+    this.AllAssets = [];
+
+    this.GetAssets();
+  }
+
+  abstract GetAssets();
+
+  RenderList() {
+
+  }
 }

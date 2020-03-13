@@ -9,10 +9,15 @@ import { AssetService } from './services/asset.service';
 import { AppRoutingModule } from './app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
 import { RetireComponent } from './features/Retire/retire.component';
+import { AllComponent } from './features/All/all.component';
+import { EmployeeComponent } from './features/Employee/employee.component';
+import { UpdateComponent } from './features/Update/update.component';
+import { CreateComponent } from './features/Create/create.component';
+import { DetailsComponent } from './features/Details/details.component';
 
 
 @NgModule({
-  declarations: [ AppComponent, RetireComponent],
+  declarations: [ AppComponent, RetireComponent, AllComponent, EmployeeComponent, UpdateComponent, CreateComponent, DetailsComponent],
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   bootstrap:    [ AppComponent ],
   providers: [AssetService, mockBackendProvider, {provide: APP_BASE_HREF, useValue : '/' }]

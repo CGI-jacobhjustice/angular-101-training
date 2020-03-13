@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RetireComponent } from './features/Retire/retire.component';
+import { AllComponent } from './features/All/all.component';
 
 const routes: Routes = [
   {path: 'retire/:id', component: RetireComponent},
-  {path: '', component: RetireComponent},
+  {path: 'all', component: AllComponent},
+  {path: '', component: AllComponent},
+  {path: '*', component: AllComponent},
 ];
 
 @NgModule({
