@@ -2,5 +2,18 @@ import { Asset } from "@/models/Asset";
 import { AssetService } from "@/services/asset.service";
 
 export abstract class GenericAssetDetailComponent   {
-  constructor(CurrentAsset: Asset, Service: AssetService) {}
+  Service: AssetService
+  CurrentAsset: Asset
+  constructor(service: AssetService) {
+    this.Service = service
+    this.CurrentAsset = null;
+  }
+
+  GetAsset(id: number) {
+    this.Service.getAssets().subscribe(data => {
+      this.CurrentAsset = data.find(asset => {
+        return asset.assetTagId == id;
+      });
+    });
+  }
 }

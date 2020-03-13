@@ -12,7 +12,7 @@
             <th>Date Retired</th>
         </thead>
         <tr *ngFor="let asset of AllAssets">
-            <td>{{asset.assetTagId}}</td>
+            <td><a routerLink="/details/{{asset.assetTagId}}" >{{asset.assetTagId}}</a></td>
             <td>{{asset.assetType}}</td>
             <td>{{asset.description}}</td>
             <td>{{asset.assignedTo}}</td>
