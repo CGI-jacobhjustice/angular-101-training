@@ -6,14 +6,12 @@ export abstract class GenericAssetDetailComponent   {
   CurrentAsset: Asset
   constructor(service: AssetService) {
     this.Service = service
-    this.CurrentAsset = null;
+    this.CurrentAsset = null; // TODO: Bad load until asset is found
   }
 
   GetAsset(id: number) {
-    this.Service.getAssets().subscribe(data => {
-      this.CurrentAsset = data.find(asset => {
-        return asset.assetTagId == id;
-      });
+    this.Service.getAsset(id).subscribe(data => {
+      this.CurrentAsset = data;
     });
   }
 }

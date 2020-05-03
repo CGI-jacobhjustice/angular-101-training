@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment'
 import { Asset } from '../models/asset'
+import {Location} from "@angular/common"
 
 
 // Demo asset service class to make HTTP requests. 
@@ -20,8 +21,12 @@ export class AssetService {
     return this.http.get<Asset[]>(`${environment.api_url}/assets`);
   }
 
-  public retireAsset(asset : Asset) : Observable<Asset> {
-    return this.http.delete<Asset>(`${environment.api_url}/assets/retire`);
+  public getAsset(id: number) : Observable<Asset> {
+    return this.http.get<Asset>(`${environment.api_url}/assets/${id}`)
+  }
+
+  public retireAsset(asset : Asset, location: Location) {
+    this.http.delete(`${environment.api_url}/assets/${asset.assetTagId}/retire` ).subscribe(() => {location.back()});
   }
 
 }
