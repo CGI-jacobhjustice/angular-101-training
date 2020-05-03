@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GenericAssetDetailComponent } from '../_Shared/GenericAssetDetailComponent';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AssetService } from '@/services/asset.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -10,17 +11,25 @@ import { AssetService } from '@/services/asset.service';
 })
 export class DetailsComponent extends GenericAssetDetailComponent  {
   route: ActivatedRoute
+  location: Location
   constructor(
     route: ActivatedRoute,
-    service: AssetService
+    service: AssetService,
+    location: Location
   ) {
     super(service)
     this.route = route;
+    this.location = location
   }
 
   ngOnInit() {
     var id = parseInt(this.route.snapshot.paramMap.get('id'))
     this.GetAsset(id)
+  }
+
+  NavigateBack() {
+    console.log("@");
+    this.location.back();
   }
 }
 

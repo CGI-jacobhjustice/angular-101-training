@@ -5,12 +5,14 @@ import { AllComponent } from './features/All/all.component';
 import { DetailsComponent } from './features/Details/details.component';
 import { UpdateComponent } from './features/Update/update.component';
 import { CreateComponent } from './features/Create/create.component';
+import { EmployeeComponent } from './features/Employee/employee.component';
 
 const routes: Routes = [
   {path: 'details/:id', component: DetailsComponent},
   {path: 'retire/:id', component: RetireComponent},
   {path: 'update/:id', component: UpdateComponent},
   {path: 'create/', component: CreateComponent},
+  {path: 'employee/:id', component: EmployeeComponent},
   {path: 'all', component: AllComponent},
   {path: '', component: AllComponent},
   {path: '*', component: AllComponent},

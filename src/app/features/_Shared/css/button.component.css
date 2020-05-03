@@ -7,3 +7,8 @@ button {
     cursor: pointer;
     border: 1px solid black;
 }
+
+button.create {
+    display: inline;
+    background-color: green;
+}

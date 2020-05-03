@@ -1,7 +1,7 @@
 <div ng-include="'../_Shared/Details/details.partial.html'"></div>
 <app-asset [asset]="CurrentAsset"></app-asset>
 <div>
-    <button routerLink="/">Exit Details</button>
+    <button (click)="NavigateBack()">Exit Details</button>
     <button routerLink="/update/{{CurrentAsset.assetTagId}}">Edit</button>
     <button routerLink="/retire/{{CurrentAsset.assetTagId}}">Retire</button>
 </div>
