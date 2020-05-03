@@ -23,32 +23,45 @@ export class EditComponent extends GenericAssetDetailComponent  {
     super(service)
     var id = parseInt(route.snapshot.paramMap.get('id'));
     if(id > 0) {
-      this.GetAsset(id);
+      this.GetAsset(id, () => {
+        this.form = this.formBuilder.group({
+          type: this.CurrentAsset.assetType,
+          description: this.CurrentAsset.description,
+          assigned: this.CurrentAsset.assignedTo,
+        });
+      });
     } else {
       this.CurrentAsset = new Asset();
     }
 
-    this.form = this.formBuilder.group({
-      type: this.CurrentAsset.assetType,
-      description: this.CurrentAsset.description,
-      assigned: this.CurrentAsset.assignedTo,
-    });
     
+    
+  }
+
+  IsEditMode() {
+    return this.CurrentAsset.assetTagId > 0;
   }
 
   onSubmit(assetData) {
     console.log(assetData);
-    var asset = new Asset();
-    asset.dateAdded = new Date();
-    asset.assetType = assetData.type;
-    asset.retired = false;
+    var asset = this.CurrentAsset;
     asset.assignedTo = assetData.assigned;
     asset.description = assetData.description;
 
     var location = this.location;
-    this.Service.createAsset(asset).subscribe(function(){
-      location.back();
-    });
+    if(this.IsEditMode()) {
+      this.Service.editAsset(asset).subscribe(function(){
+        location.back();
+      });
+    } else {
+      asset.assetType = assetData.type;
+      asset.dateAdded = new Date();
+      asset.retired = false;
+
+      this.Service.createAsset(asset).subscribe(function(){
+        location.back();
+      });
+    }
   }
 }
 

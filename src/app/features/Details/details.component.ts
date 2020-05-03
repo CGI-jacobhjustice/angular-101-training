@@ -24,7 +24,7 @@ export class DetailsComponent extends GenericAssetDetailComponent  {
 
   ngOnInit() {
     var id = parseInt(this.route.snapshot.paramMap.get('id'))
-    this.GetAsset(id)
+    this.GetAsset(id, undefined)
   }
 
   NavigateBack() {

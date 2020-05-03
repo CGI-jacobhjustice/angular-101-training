@@ -15,7 +15,7 @@
         <input id="assigned" type="text" formControlName="assigned">
       </div>
 
-      <div>
+      <div *ngIf="!IsEditMode()">
         <label for="type">
           Asset Type
         </label>
@@ -30,6 +30,6 @@
         </select>
       </div>
 
-      <button type="submit">{{CurrentAsset.assetTagId > 0 ? "Update" : "Create" }}</button>
+      <button type="submit">{{IsEditMode() ? "Update" : "Create" }}</button>
 </form>
 </div>

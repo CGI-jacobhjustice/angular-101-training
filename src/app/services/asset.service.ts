@@ -17,6 +17,10 @@ export class AssetService {
     return this.http.post<Asset>(`${environment.api_url}/assets`, asset);
   }
 
+  public editAsset(asset: Asset) : Observable<Asset> {
+    return this.http.put<Asset>(`${environment.api_url}/assets/${asset.assetTagId}`, asset)
+  }
+
   public getAssets() : Observable<Asset[]> {
     return this.http.get<Asset[]>(`${environment.api_url}/assets`);
   }

@@ -9,9 +9,13 @@ export abstract class GenericAssetDetailComponent   {
     this.CurrentAsset = null; // TODO: Bad load until asset is found
   }
 
-  GetAsset(id: number) {
+  GetAsset(id: number, callback: Function) {
     this.Service.getAsset(id).subscribe(data => {
       this.CurrentAsset = data;
+
+      if(callback != undefined) {
+        callback();
+      }
     });
   }
 }

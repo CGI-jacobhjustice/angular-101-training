@@ -2,6 +2,6 @@
 <app-asset [asset]="CurrentAsset"></app-asset>
 <div>
     <button (click)="NavigateBack()">Exit Details</button>
-    <button routerLink="/update/{{CurrentAsset.assetTagId}}">Edit</button>
+    <button routerLink="/edit/{{CurrentAsset.assetTagId}}">Edit</button>
     <button routerLink="/retire/{{CurrentAsset.assetTagId}}">Retire</button>
 </div>
