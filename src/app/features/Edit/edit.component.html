@@ -1,0 +1,35 @@
+<div *ngIf="CurrentAsset != null">
+
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <div>
+        <label for="description">
+          Description
+        </label>
+        <input id="description" type="text" formControlName="description">
+      </div>
+    
+      <div>
+        <label for="assigned">
+          Assigned to ID
+        </label>
+        <input id="assigned" type="text" formControlName="assigned">
+      </div>
+
+      <div>
+        <label for="type">
+          Asset Type
+        </label>
+        <select id="type" type="text" formControlName="type">
+            <option value="Desktop">Desktop</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Display">Display</option>
+            <option value="Phone">Phone</option>
+            <option value="External Hard Drive">External Hard Drive</option>
+            <option value="Other">Other</option>
+
+        </select>
+      </div>
+
+      <button type="submit">{{CurrentAsset.assetTagId > 0 ? "Update" : "Create" }}</button>
+</form>
+</div>

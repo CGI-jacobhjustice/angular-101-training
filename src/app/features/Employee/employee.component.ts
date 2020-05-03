@@ -14,7 +14,8 @@ export class EmployeeComponent extends GenericAssetsListComponent  {
   employeeID: string
   constructor(
     route: ActivatedRoute,
-    service: AssetService
+    service: AssetService,
+    
   ) {
     super(service)
     this.employeeID = route.snapshot.paramMap.get('id');
