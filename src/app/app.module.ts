@@ -19,10 +19,12 @@ import { YesNoPipe } from './features/_Shared/Pipes/yesno.pipe';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { EditComponent } from './features/Edit/edit.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSortModule} from '@angular/material'
 
 @NgModule({
   declarations: [ AppComponent, RetireComponent, AllComponent, EmployeeComponent, EditComponent, DetailsComponent, YesNoPipe, AssetComponent, AssetTableComponent],
-  imports:      [ FormsModule,ReactiveFormsModule,BrowserModule, HttpClientModule, AppRoutingModule, LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR})],
+  imports:      [  MatSortModule, FormsModule,ReactiveFormsModule,BrowserModule, HttpClientModule, AppRoutingModule, LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR}), NoopAnimationsModule],
   bootstrap:    [ AppComponent ],
   providers: [AssetService, mockBackendProvider, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })

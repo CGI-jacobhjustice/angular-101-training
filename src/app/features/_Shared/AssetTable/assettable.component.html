@@ -3,16 +3,16 @@
 
 <div *ngIf="CurrentAssets == null || CurrentAssets.length == 0">No assets</div>
 <div *ngIf="CurrentAssets != null && CurrentAssets.length > 0">
-    <table>
-        <thead>
-            <th>Asset Tag ID</th>
-            <th>Asset Type</th>
-            <th>Asset Description</th>
-            <th>Assigned To ID</th>
-            <th>Date Added</th>
-            <th>Retired?</th>
-            <th>Date Retired</th>
-        </thead>
+    <table matSort (matSortChange)="sortData($event)">
+        <tr>
+            <th mat-sort-header="id">Asset Tag ID</th>
+            <th mat-sort-header="type">Asset Type</th>
+            <th mat-sort-header="description">Asset Description</th>
+            <th mat-sort-header="assigned">Assigned To ID</th>
+            <th mat-sort-header="added">Date Added</th>
+            <th mat-sort-header="retired">Retired?</th>
+            <th mat-sort-header="retiredDate">Date Retired</th>
+        </tr>
         <tr *ngFor="let asset of CurrentAssets">
             <td><a routerLink="/details/{{asset.assetTagId}}" >{{asset.assetTagId}}</a></td>
             <td>{{asset.assetType}}</td>
