@@ -1,4 +1,4 @@
-import { Asset } from "@/models/Asset";
+import { Asset } from "@/models/asset";
 import { AssetService } from "@/services/asset.service";
 
 

@@ -14,7 +14,7 @@
             <th>Date Retired</th>
         </thead>
         <tr *ngFor="let asset of CurrentAssets">
-            <td><a routerLink="/details/{{asset.assetTagId}}" >{{asset.assetTagId}}</a></td>
+            <td><a routerLink="/details/{{asset.assetTagId}}?forEmployee={{ForEmployee}}" >{{asset.assetTagId}}</a></td>
             <td>{{asset.assetType}}</td>
             <td>{{asset.description}}</td>
             <td><a routerLink="/employee/{{asset.assignedTo}}">{{asset.assignedTo}}</a></td>
