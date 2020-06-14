@@ -9,7 +9,7 @@ import {Sort} from '@angular/material/sort'
 })
 export class AssetTableComponent   {
   @Input('assets') CurrentAssets:Asset[]
-
+  Filter: string = "";
 
   sortData(sort: Sort) {
     const data = this.CurrentAssets;
@@ -38,6 +38,20 @@ export class AssetTableComponent   {
 
   compare(a: number | string | Date | Boolean, b: number | string | Date | Boolean, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  IsAssetFilteredOut(asset: Asset) {
+    if(this.Filter.length == 0) {
+      return false;
+    }
+    var filter = this.Filter.toLocaleLowerCase()
+    return (asset.assetTagId? asset.assetTagId.toString().indexOf(filter) == -1 : true)
+      && (asset.assetType? asset.assetType.toString().indexOf(filter) == -1 : true)
+      && (asset.description? asset.description.toString().indexOf(filter) == -1 : true)
+      && (asset.assignedTo? asset.assignedTo.toString().indexOf(filter) == -1 : true)
+      && (asset.dateAdded? asset.dateAdded.toLocaleDateString().indexOf(filter) == -1 : true)
+      && (asset.retired? asset.retired.toString().indexOf(filter) == -1 : true)
+      && (asset.dateRetired? asset.dateRetired.toLocaleDateString().indexOf(filter) == -1 : true)
   }
 }
 

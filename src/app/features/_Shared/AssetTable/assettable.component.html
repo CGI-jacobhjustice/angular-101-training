@@ -3,6 +3,7 @@
 
 <div *ngIf="CurrentAssets == null || CurrentAssets.length == 0">No assets</div>
 <div *ngIf="CurrentAssets != null && CurrentAssets.length > 0">
+    <div>Filter: <input [(ngModel)]="Filter"/></div>
     <table matSort (matSortChange)="sortData($event)">
         <tr>
             <th mat-sort-header="id">Asset Tag ID</th>
@@ -13,7 +14,8 @@
             <th mat-sort-header="retired">Retired?</th>
             <th mat-sort-header="retiredDate">Date Retired</th>
         </tr>
-        <tr *ngFor="let asset of CurrentAssets">
+        <ng-container *ngFor="let asset of CurrentAssets">
+            <tr *ngIf="!IsAssetFilteredOut(asset)">
             <td><a routerLink="/details/{{asset.assetTagId}}" >{{asset.assetTagId}}</a></td>
             <td>{{asset.assetType}}</td>
             <td>{{asset.description}}</td>
@@ -21,7 +23,8 @@
             <td>{{asset.dateAdded | date:"MM/dd/yyyy"}}</td>
             <td>{{asset.retired | yes_no }}</td>
             <td>{{asset.dateRetired | date:"MM/dd/yyyy"}}</td>
-        </tr>
+            </tr>
+        </ng-container>
     </table>
 </div>
 
