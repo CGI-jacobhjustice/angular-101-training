@@ -15,18 +15,10 @@ export class DetailsComponent extends GenericAssetDetailComponent  {
   constructor(
     route: ActivatedRoute,
     service: AssetService,
-    location: Location,
     logger: NGXLogger
   ) {
     super(parseInt(route.snapshot.paramMap.get('id')), service, logger)
-    this.location = location
     this.Logger.info(`Loading Asset ${this.id} Details Page...`)
-  }
-
-
-
-  NavigateBack() {
-    this.location.back();
   }
 }
 
