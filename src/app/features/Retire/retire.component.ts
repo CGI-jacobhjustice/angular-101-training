@@ -26,7 +26,7 @@ export class RetireComponent extends GenericAssetDetailComponent  {
 
   RetireAsset() {
     // TODO: Fix to subscribe to service
-    this.Service.retireAsset(this.CurrentAsset, this.location)
+    this.Service.retireAsset(this.CurrentAsset, this.location).subscribe(() => {this.location.back()});
   } 
 }
 

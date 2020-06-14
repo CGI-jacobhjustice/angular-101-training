@@ -30,7 +30,7 @@ export class AssetService {
   }
 
   public retireAsset(asset : Asset, location: Location) {
-    this.http.delete(`${environment.api_url}/assets/${asset.assetTagId}/retire` ).subscribe(() => {location.back()});
+    return this.http.delete(`${environment.api_url}/assets/${asset.assetTagId}/retire` );
   }
 
 }

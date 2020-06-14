@@ -2,7 +2,7 @@
 <div *ngIf="CurrentAsset != null">
 <app-asset [asset]="CurrentAsset"></app-asset>
 <div>
-    <button (click)="NavigateBack()">Exit Details</button>
+    <button routerLink="/">Exit Details</button>
     <div style="display:inline;" *ngIf="!CurrentAsset.retired">
         <button routerLink="/edit/{{CurrentAsset.assetTagId}}">Edit</button>
         <button routerLink="/retire/{{CurrentAsset.assetTagId}}">Retire</button>
