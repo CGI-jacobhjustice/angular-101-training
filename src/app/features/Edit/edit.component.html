@@ -5,7 +5,15 @@
         <label for="description">
           Description
         </label>
-        <input id="description" type="text" formControlName="description">
+        <input  required class="form-control" id="description" type="text" formControlName="description" >
+        <!-- <div *ngIf="description.invalid && (description.dirty || description.touched)"class="alert alert-danger">
+      
+        <div *ngIf="description.errors.required">
+          Name is required.
+        </div>
+
+      
+        </div> -->
       </div>
     
       <div>
@@ -19,7 +27,7 @@
         <label for="type">
           Asset Type
         </label>
-        <select id="type" type="text" formControlName="type">
+        <select required id="type" type="text" formControlName="type">
             <option value="Desktop">Desktop</option>
             <option value="Laptop">Laptop</option>
             <option value="Display">Display</option>
@@ -30,6 +38,6 @@
         </select>
       </div>
 
-      <button type="submit">{{IsEditMode() ? "Update" : "Create" }}</button>
+      <button [disabled]="!form.valid" type="submit">{{IsEditMode() ? "Update" : "Create" }}</button>
 </form>
 </div>

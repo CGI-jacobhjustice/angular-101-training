@@ -6,7 +6,7 @@ export abstract class GenericAssetDetailComponent   {
   CurrentAsset: Asset
   constructor(service: AssetService) {
     this.Service = service
-    this.CurrentAsset = null; // TODO: Bad load until asset is found
+    this.CurrentAsset = new Asset();
   }
 
   GetAsset(id: number, callback: Function) {

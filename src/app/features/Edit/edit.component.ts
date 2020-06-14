@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GenericAssetDetailComponent } from '../_Shared/GenericAssetDetailComponent';
-import {FormBuilder } from "@angular/forms"
+import {FormBuilder, FormControl, Validators } from "@angular/forms"
 import { AssetService } from '@/services/asset.service';
 import { ActivatedRoute } from '@angular/router';
 import { Asset } from '@/models/asset';
@@ -22,24 +22,31 @@ export class EditComponent extends GenericAssetDetailComponent  {
   ){
     super(service)
     var id = parseInt(route.snapshot.paramMap.get('id'));
+ 
     if(id > 0) {
+      this.CurrentAsset = null;
       this.GetAsset(id, () => {
-        this.form = this.formBuilder.group({
-          type: this.CurrentAsset.assetType,
-          description: this.CurrentAsset.description,
-          assigned: this.CurrentAsset.assignedTo,
-        });
+        this.form = this.formBuilder.group(this.generateFormGroupProperties());
       });
     } else {
-      this.CurrentAsset = new Asset();
+        this.CurrentAsset = new Asset();
+        this.form = this.formBuilder.group(this.generateFormGroupProperties());
     }
 
     
     
   }
 
+  private generateFormGroupProperties() {
+    return {
+      description: new FormControl(this.CurrentAsset.description, [Validators.required]),
+      assigned: new FormControl(this.CurrentAsset.assignedTo),
+      type: new FormControl(this.CurrentAsset.assetType, [Validators.required])
+    }
+  }
+
   IsEditMode() {
-    return this.CurrentAsset.assetTagId > 0;
+    return this.CurrentAsset? this.CurrentAsset.assetTagId > 0 : false;
   }
 
   onSubmit(assetData) {
