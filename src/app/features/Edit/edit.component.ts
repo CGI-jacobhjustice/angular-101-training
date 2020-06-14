@@ -10,7 +10,7 @@ import { NGXLogger } from 'ngx-logger';
 @Component({
   selector: 'app-create',
   templateUrl: `./edit.component.html`,
-  
+  styleUrls: ['../_Shared/css/button.component.css']
 })
 export class EditComponent extends GenericAssetDetailComponent  {
   form;
@@ -71,6 +71,10 @@ export class EditComponent extends GenericAssetDetailComponent  {
         location.back();
       });
     }
+  }
+
+  NavigateBack() {
+    this.location.back();
   }
 }
 

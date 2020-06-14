@@ -8,14 +8,14 @@
         <input  required class="form-control" id="description" type="text" formControlName="description" >
 
       </div>
-    
+      <br/>
       <div>
         <label for="assigned">
           Assigned to ID
         </label>
         <input id="assigned" type="text" formControlName="assigned">
       </div>
-
+      <br/>
       <div *ngIf="!IsEditMode()">
         <label for="type">
           Asset Type
@@ -31,6 +31,7 @@
         </select>
       </div>
 
-      <button [disabled]="!form.valid" type="submit">{{IsEditMode() ? "Update" : "Create" }}</button>
+      <button class="create" [disabled]="!form.valid" type="submit">{{IsEditMode() ? "Update" : "Create" }}</button>
+      <button (click)="NavigateBack()">Back</button>
 </form>
 </div>
