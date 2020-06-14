@@ -16,13 +16,13 @@
         </tr>
         <ng-container *ngFor="let asset of CurrentAssets">
             <tr *ngIf="!IsAssetFilteredOut(asset)">
-            <td><a routerLink="/details/{{asset.assetTagId}}" >{{asset.assetTagId}}</a></td>
-            <td>{{asset.assetType}}</td>
-            <td>{{asset.description}}</td>
-            <td><a routerLink="/employee/{{asset.assignedTo}}">{{asset.assignedTo}}</a></td>
-            <td>{{asset.dateAdded | date:"MM/dd/yyyy"}}</td>
-            <td>{{asset.retired | yes_no }}</td>
-            <td>{{asset.dateRetired | date:"MM/dd/yyyy"}}</td>
+                <td><a routerLink="/details/{{asset.assetTagId}}" >{{asset.assetTagId}}</a></td>
+                <td>{{asset.assetType}}</td>
+                <td>{{asset.description}}</td>
+                <td><a routerLink="/employee/{{asset.assignedTo}}">{{asset.assignedTo}}</a></td>
+                <td>{{asset.dateAdded | date:"MM/dd/yyyy"}}</td>
+                <td>{{asset.retired | yes_no }}</td>
+                <td>{{asset.dateRetired | date:"MM/dd/yyyy"}}</td>
             </tr>
         </ng-container>
     </table>
