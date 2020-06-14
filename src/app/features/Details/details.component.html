@@ -1,7 +1,11 @@
 <div ng-include="'../_Shared/Details/details.partial.html'"></div>
+<div *ngIf="CurrentAsset != null">
 <app-asset [asset]="CurrentAsset"></app-asset>
 <div>
     <button (click)="NavigateBack()">Exit Details</button>
-    <button routerLink="/edit/{{CurrentAsset.assetTagId}}">Edit</button>
-    <button routerLink="/retire/{{CurrentAsset.assetTagId}}">Retire</button>
+    <div style="display:inline;" *ngIf="!CurrentAsset.retired">
+        <button routerLink="/edit/{{CurrentAsset.assetTagId}}">Edit</button>
+        <button routerLink="/retire/{{CurrentAsset.assetTagId}}">Retire</button>
+    </div>
+</div>
 </div>

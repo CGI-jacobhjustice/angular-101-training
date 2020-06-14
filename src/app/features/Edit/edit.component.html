@@ -3,7 +3,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
     <div>
         <label for="description">
-          Description
+          Description*
         </label>
         <input  required class="form-control" id="description" type="text" formControlName="description" >
 
@@ -18,7 +18,7 @@
       <br/>
       <div *ngIf="!IsEditMode()">
         <label for="type">
-          Asset Type
+          Asset Type*
         </label>
         <select required id="type" type="text" formControlName="type">
             <option value="Desktop">Desktop</option>
@@ -30,7 +30,8 @@
 
         </select>
       </div>
-
+      <br/><br/>
+      <div>*required</div>
       <button class="create" [disabled]="!form.valid" type="submit">{{IsEditMode() ? "Update" : "Create" }}</button>
       <button (click)="NavigateBack()">Back</button>
 </form>

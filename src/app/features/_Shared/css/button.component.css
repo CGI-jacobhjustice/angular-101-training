@@ -12,3 +12,9 @@ button.create {
     display: inline;
     background-color: #44cc66;
 }
+
+button:disabled {
+    cursor: default;
+    color: lightgrey;
+    background-color: #449933;
+}

@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GenericAssetsListComponent } from '../_Shared/GenericAssetsListComponent';
-import { Asset } from "@/models/asset";
 import { AssetService } from "@/services/asset.service";
-import { debug } from 'util';
 import {NGXLogger} from 'ngx-logger';
 
 @Component({

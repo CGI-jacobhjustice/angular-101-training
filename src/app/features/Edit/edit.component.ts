@@ -50,24 +50,28 @@ export class EditComponent extends GenericAssetDetailComponent  {
   }
 
   onSubmit(assetData) {
+    var log = this.Logger;
+    if(!this.form.valid) {
+      return;
+    }
     var asset = this.CurrentAsset;
     asset.assignedTo = assetData.assigned;
     asset.description = assetData.description;
 
     var location = this.location;
     if(this.IsEditMode()) {
-      this.Logger.info(`Preparing to update Asset ${this.id}.`)
+      log.info(`Preparing to update Asset ${this.id}.`)
       this.Service.editAsset(asset).subscribe(function(){
-        this.Logger.info(`Successfully Updated Asset ${this.id}.`)
+        log.info(`Successfully Updated Asset ${this.id}.`)
         location.back();
       });
     } else {
       asset.assetType = assetData.type;
       asset.dateAdded = new Date();
       asset.retired = false;
-      this.Logger.info(`Preparing to Create Asset.`)
+      log.info(`Preparing to Create Asset.`)
       this.Service.createAsset(asset).subscribe(function(data){
-        this.Logger.info(`Successfully Created Asset ${data.assetTagId}.`)
+        log.info(`Successfully Created Asset ${data.assetTagId}.`)
         location.back();
       });
     }

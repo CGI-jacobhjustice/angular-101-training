@@ -9,7 +9,6 @@ export abstract class GenericAssetDetailComponent   {
   protected id: number
   constructor(id:number, service: AssetService, logger: NGXLogger) {
     this.Service = service
-    this.CurrentAsset = new Asset();
     this.Logger = logger;
     this.id = id;
   }
