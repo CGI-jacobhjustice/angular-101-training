@@ -3,6 +3,7 @@ import {Location } from "@angular/common"
 import { GenericAssetDetailComponent } from '../_Shared/GenericAssetDetailComponent';
 import { ActivatedRoute } from '@angular/router';
 import { AssetService } from '@/services/asset.service';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-retire',
@@ -10,26 +11,21 @@ import { AssetService } from '@/services/asset.service';
   styleUrls: ['../_Shared/css/button.component.css']
 })
 export class RetireComponent extends GenericAssetDetailComponent  {
-  route: ActivatedRoute;
   location: Location
   constructor(
     route: ActivatedRoute,
     service: AssetService,
-    location: Location
+    location: Location,
+    logger: NGXLogger
   ) {
-    super(service)
-    this.route = route;
+    super(parseInt(route.snapshot.paramMap.get('id')), service, logger)
     this.location = location;
+    this.Logger.info(`Loading Retire Asset ${this.id} Page...`)
 
-  }
-
-  ngOnInit() {
-    var id = parseInt(this.route.snapshot.paramMap.get('id'))
-    this.GetAsset(id, undefined)
   }
 
   RetireAsset() {
-    console.log(this.location)
+    // TODO: Fix to subscribe to service
     this.Service.retireAsset(this.CurrentAsset, this.location)
   }
 }

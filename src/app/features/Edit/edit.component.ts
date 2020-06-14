@@ -5,6 +5,7 @@ import { AssetService } from '@/services/asset.service';
 import { ActivatedRoute } from '@angular/router';
 import { Asset } from '@/models/asset';
 import { Location } from '@angular/common';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-create',
@@ -18,23 +19,22 @@ export class EditComponent extends GenericAssetDetailComponent  {
     private formBuilder: FormBuilder,
     service: AssetService,
     route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    logger: NGXLogger
   ){
-    super(service)
-    var id = parseInt(route.snapshot.paramMap.get('id'));
- 
-    if(id > 0) {
+    super(parseInt(route.snapshot.paramMap.get('id')), service, logger)
+    this.Logger.info(this.IsEditMode() ? `Loading Edit Asset ${this.id} Page...` : `Loading Create Asset Page...`)
+
+    if(this.id > 0) {
       this.CurrentAsset = null;
-      this.GetAsset(id, () => {
-        this.form = this.formBuilder.group(this.generateFormGroupProperties());
-      });
     } else {
         this.CurrentAsset = new Asset();
         this.form = this.formBuilder.group(this.generateFormGroupProperties());
     }
+  }
 
-    
-    
+  GetAssetCallback() {
+    this.form = this.formBuilder.group(this.generateFormGroupProperties());
   }
 
   private generateFormGroupProperties() {
@@ -50,22 +50,24 @@ export class EditComponent extends GenericAssetDetailComponent  {
   }
 
   onSubmit(assetData) {
-    console.log(assetData);
     var asset = this.CurrentAsset;
     asset.assignedTo = assetData.assigned;
     asset.description = assetData.description;
 
     var location = this.location;
     if(this.IsEditMode()) {
+      this.Logger.info(`Preparing to update Asset ${this.id}.`)
       this.Service.editAsset(asset).subscribe(function(){
+        this.Logger.info(`Successfully Updated Asset ${this.id}.`)
         location.back();
       });
     } else {
       asset.assetType = assetData.type;
       asset.dateAdded = new Date();
       asset.retired = false;
-
-      this.Service.createAsset(asset).subscribe(function(){
+      this.Logger.info(`Preparing to Create Asset.`)
+      this.Service.createAsset(asset).subscribe(function(data){
+        this.Logger.info(`Successfully Created Asset ${data.assetTagId}.`)
         location.back();
       });
     }

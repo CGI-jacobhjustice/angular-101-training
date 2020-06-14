@@ -3,6 +3,7 @@ import { GenericAssetDetailComponent } from '../_Shared/GenericAssetDetailCompon
 import { Router, ActivatedRoute } from '@angular/router';
 import { AssetService } from '@/services/asset.service';
 import { Location } from '@angular/common';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-details',
@@ -10,25 +11,21 @@ import { Location } from '@angular/common';
   styleUrls: ['../_Shared/css/button.component.css']
 })
 export class DetailsComponent extends GenericAssetDetailComponent  {
-  route: ActivatedRoute
   location: Location
   constructor(
     route: ActivatedRoute,
     service: AssetService,
-    location: Location
+    location: Location,
+    logger: NGXLogger
   ) {
-    super(service)
-    this.route = route;
+    super(parseInt(route.snapshot.paramMap.get('id')), service, logger)
     this.location = location
+    this.Logger.info(`Loading Asset ${this.id} Details Page...`)
   }
 
-  ngOnInit() {
-    var id = parseInt(this.route.snapshot.paramMap.get('id'))
-    this.GetAsset(id, undefined)
-  }
+
 
   NavigateBack() {
-    console.log("@");
     this.location.back();
   }
 }

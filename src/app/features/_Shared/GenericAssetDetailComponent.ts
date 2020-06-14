@@ -1,21 +1,33 @@
 import { Asset } from "@/models/asset";
 import { AssetService } from "@/services/asset.service";
+import { NGXLogger } from "ngx-logger";
 
 export abstract class GenericAssetDetailComponent   {
   Service: AssetService
   CurrentAsset: Asset
-  constructor(service: AssetService) {
+  Logger: NGXLogger
+  protected id: number
+  constructor(id:number, service: AssetService, logger: NGXLogger) {
     this.Service = service
     this.CurrentAsset = new Asset();
+    this.Logger = logger;
+    this.id = id;
   }
 
-  GetAsset(id: number, callback: Function) {
-    this.Service.getAsset(id).subscribe(data => {
-      this.CurrentAsset = data;
+  ngOnInit() {
+    this.GetAsset()
+  }
 
-      if(callback != undefined) {
-        callback();
-      }
-    });
+  GetAsset() {
+    if(this.id > 0) {
+      this.Service.getAsset(this.id).subscribe(data => {
+        this.CurrentAsset = data;
+        this.GetAssetCallback();
+      });
+    }
+  }
+
+  GetAssetCallback() {
+    
   }
 }

@@ -3,6 +3,7 @@ import { GenericAssetsListComponent } from '../_Shared/GenericAssetsListComponen
 import { Asset } from "@/models/asset";
 import { AssetService } from "@/services/asset.service";
 import { debug } from 'util';
+import {NGXLogger} from 'ngx-logger';
 
 @Component({
   selector: 'app-all',
@@ -10,14 +11,16 @@ import { debug } from 'util';
 
 })
 export class AllComponent extends GenericAssetsListComponent  {
-  constructor(service: AssetService) {
-    super(service)
-    console.log("START")
+  constructor(service: AssetService,  logger: NGXLogger) {
+    super(service, logger);
+    this.Logger.info(`Loading All Assets Page...`)
   }
 
   GetAssets() {
+    this.Logger.info(`Preparing to Retrieve all Assets.`)
     this.Service.getAssets().subscribe(data => {
-      this.AllAssets = data.filter(asset => !asset.retired) // TODO: Is this right?
+      this.AllAssets = data.filter(asset => !asset.retired) 
+      this.Logger.info(`${this.AllAssets.length} Assets Retrieved.`)
     })
   }
 }

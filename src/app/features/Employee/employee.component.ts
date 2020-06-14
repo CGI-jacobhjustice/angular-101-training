@@ -3,6 +3,7 @@ import { GenericAssetsListComponent } from '../_Shared/GenericAssetsListComponen
 //import { Asset } from "./Asset";
 import { AssetService } from "@/services/asset.service";
 import { ActivatedRoute } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-employee',
@@ -15,19 +16,21 @@ export class EmployeeComponent extends GenericAssetsListComponent  {
   constructor(
     route: ActivatedRoute,
     service: AssetService,
-    
+    logger: NGXLogger
   ) {
-    super(service)
+    super(service, logger)
     this.employeeID = route.snapshot.paramMap.get('id');
+    this.Logger.info(`Loading Employee ${this.employeeID}'s Assets Page...`)
   }
 
-  ngOnInit() {
-    this.GetAssets()
-  }
+
   
   GetAssets() {
+    this.Logger.info(`Preparing to Retrieve Assets for Employee: ${this.employeeID}.`)
     this.Service.getAssets().subscribe(data => {
-      this.AllAssets = data.filter(asset => !asset.retired && asset.assignedTo == this.employeeID) // TODO: Is this right?
+
+      this.AllAssets = data.filter(asset => !asset.retired && asset.assignedTo == this.employeeID) 
+      this.Logger.info(`${this.AllAssets.length} Assets Retrieved.`)
     })
   }
 }

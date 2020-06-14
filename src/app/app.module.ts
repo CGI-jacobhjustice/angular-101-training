@@ -18,11 +18,12 @@ import { AssetTableComponent } from "./features/_Shared/AssetTable/assettable.co
 import { YesNoPipe } from './features/_Shared/Pipes/yesno.pipe';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { EditComponent } from './features/Edit/edit.component';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 @NgModule({
   declarations: [ AppComponent, RetireComponent, AllComponent, EmployeeComponent, EditComponent, DetailsComponent, YesNoPipe, AssetComponent, AssetTableComponent],
-  imports:      [ FormsModule,ReactiveFormsModule,BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+  imports:      [ FormsModule,ReactiveFormsModule,BrowserModule, HttpClientModule, AppRoutingModule, LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR})],
   bootstrap:    [ AppComponent ],
-  providers: [AssetService, mockBackendProvider, {provide: LocationStrategy, useClass: HashLocationStrategy}]//{provide: APP_BASE_HREF, useValue : '/' }]
+  providers: [AssetService, mockBackendProvider, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppModule { }
